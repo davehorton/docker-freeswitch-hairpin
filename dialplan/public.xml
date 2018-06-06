@@ -1,0 +1,20 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<include>
+  <context name="public">
+
+    <extension name="hairpin_and_record">
+      <condition field="${sip_h_X-Return-Token}" expression="^(.+)$">
+        <action application="export" data="sip_h_X-Return-Token=${sip_h_X-Return-Token}" />
+        <action application="export" data="_nolocal_jitterbuffer_msec=100"/>
+        <action application="set" data="RECORD_STEREO=true"/>
+        <action application="set" data="call_id=${strftime(%Y%m%d_%H%M%S)}_${sip_from_tag}"/>
+        <action application="set" data="outfile=$${base_dir}/recordings/${call_id}.wav"/> 
+        <action application="record_session" data="${outfile}"/>
+        <action application="set" data="hangup_after_bridge=true"/> 
+        <action application="bridge" data="sofia/external/${destination_number}@${network_addr}"/>
+      </condition>
+    </extension>
+   
+  </context>
+</include>

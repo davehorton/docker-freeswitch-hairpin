@@ -1,4 +1,4 @@
-FROM drachtio/drachtio-freeswitch-base:slim
+FROM drachtio/drachtio-freeswitch-base:latest
 
 COPY ./entrypoint.sh /
 

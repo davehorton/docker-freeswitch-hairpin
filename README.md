@@ -1,10 +1,10 @@
-# docker-drachtio-freeswitch-siprec-recorder
+# docker-freeswitch-hairpin
 
 A Freeswitch 1.6 image designed for use with [drachtio-freeswitch-siprec-recording-server](http://davehorton.github.io/drachtio-siprec-recording-server/).
 
 To run with default options:
 ```bash
-docker run -d --rm --name FS1 --net=host drachtio/drachtio-freeswitch-siprec-recording-server freeswitch 
+docker run -d --rm --name FS1 --net=host davehorton/freeswitch-hairpin freeswitch 
 ```
 To jump in to a running container with a freeswitch console:
 ```bash
@@ -28,5 +28,5 @@ docker run -d --rm --name FS1 --net=host \
 -v /home/deploy/log:/usr/local/freeswitch/log  \
 -v /home/deploy/sounds:/usr/local/freeswitch/sounds \
 -v /home/deploy/recordings:/usr/local/freeswitch/recordings \
-drachtio/drachtio-freeswitch-siprec-recording-server --sip-port 5038 --tls-port 5039 --rtp-range-start 20000 --rtp-range-end 21000
+davehorton/freeswitch-hairpin --sip-port 5038 --tls-port 5039 --rtp-range-start 20000 --rtp-range-end 21000
 ```
